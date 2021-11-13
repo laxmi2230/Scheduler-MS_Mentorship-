@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const User2 = require('../DB/User2');
-const route = express.Router();
+const route = express.Router(); 
 
 route.post('/', async (req, res)=> {
     const{availableseats,totalseats,onlineseats,offlineseats,subjectcode} = req.body;
@@ -14,6 +14,22 @@ route.post('/', async (req, res)=> {
     let usermodel2 = new User2(user2);
     await usermodel2.save();
     res.json (usermodel2);
+})
+
+route.post("/subjectcode", (req,res,next)=>{
+    console.log("abc")
+    {/*try {
+        const resp = await user2.find(
+          {subjectcode:subjectcode}
+        );
+        res.send(resp);
+      } catch (err) {
+        res.status(500);
+        res.send({
+          err: "Server error",
+        });
+        next(err);
+      }*/}
 })
 
 module.exports = route;

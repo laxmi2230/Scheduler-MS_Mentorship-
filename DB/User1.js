@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const user1= mongoose.Schema({
     fullname:{
-        type: String
+        type: String,
     },
     dob:{
         type: Number
@@ -12,6 +12,9 @@ const user1= mongoose.Schema({
         required: true,
         //required: true,
          //unique: false,
+    },
+    offline_online:{
+        type: String,
     },
     subjectname:{
         type: String
