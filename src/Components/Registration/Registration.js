@@ -58,7 +58,7 @@ class Registration extends Component {
       subjectcode: this.state.subjectcode,
       subjectname: this.state.subjectname
     }
-    axios.post('http://localhost:3001/api/usermodel2/seats', registered)
+    axios.post('http://localhost:3001/api/usermodel1', registered)
         .then(response => console.log(response.data))
     
       this.setState({
@@ -74,7 +74,7 @@ class Registration extends Component {
     const blogs = {
       offline_online : this.state.offline_online
     }
-    axios.post('http://localhost:3001/api/usermodel2', blogs)
+    axios.post('http://localhost:3001/api/usermodel2/seats', blogs)
   .then(response=>console.log(response.data));
   }
   render() {
