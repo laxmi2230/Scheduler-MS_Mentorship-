@@ -19,7 +19,7 @@ class Registration extends Component {
     this.changeSubjectcode=this.changeSubjectcode.bind(this)
     this.changeSubjectname=this.changeSubjectname.bind(this)
     this.onSubmit=this.onSubmit.bind(this)
-    this.onChange=this.onChange.bind(this)
+     this.onChange=this.onChange.bind(this)
     
   }
 
@@ -58,7 +58,7 @@ class Registration extends Component {
       subjectcode: this.state.subjectcode,
       subjectname: this.state.subjectname
     }
-    axios.post('http://localhost:3001/api/usermodel1', registered)
+    axios.post('http://localhost:3001/api/usermodel2/seats', registered)
         .then(response => console.log(response.data))
     
       this.setState({
