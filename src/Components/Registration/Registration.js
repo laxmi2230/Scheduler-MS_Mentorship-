@@ -11,7 +11,8 @@ class Registration extends Component {
       dob:'',
       offline_online:'',
       subjectcode:'',
-      subjectname:''
+      subjectname:'',
+      seats:null
     }
     this.changeFullname=this.changeFullname.bind(this)
     this.changeDob=this.changeDob.bind(this)
@@ -19,7 +20,7 @@ class Registration extends Component {
     this.changeSubjectcode=this.changeSubjectcode.bind(this)
     this.changeSubjectname=this.changeSubjectname.bind(this)
     this.onSubmit=this.onSubmit.bind(this)
-     this.onChange=this.onChange.bind(this)
+    this.onChange=this.onChange.bind(this)
     
   }
 
@@ -59,30 +60,32 @@ class Registration extends Component {
       subjectname: this.state.subjectname
     }
     axios.post('http://localhost:3001/api/usermodel1', registered)
-        .then(response => console.log(response.data))
+        .then(response =>console.log(response.data))
     
       this.setState({
       fullname:'',
       dob:'',
       offline_online:'',
       subjectcode:'',
-      subjectname:''
+      subjectname:'' 
     })
  }
   onChange(){
     //console.log("xyz");
     const blogs = {
-      offline_online : this.state.offline_online
+      subjectcode : this.state.subjectcode
     }
     axios.post('http://localhost:3001/api/usermodel2/seats', blogs)
-  .then(response=>console.log(response.data));
+  .then(response=>this.setState({seats:response.data}));
+ 
   }
   render() {
+    //console.log(this.state.seats)
     return (
       <div>
-      <article className="br2 ba dark-gray b--black-10 mv4 w-100 w-50-m w-25-l mw5 center">
+      <article className="dark-gray b--black-10 mv4 w-100 w-50-m w-25-l mw5 center">
       <main className="pa4 black-80">
-      <form className="measure center" onSubmit={this.onSubmit}>
+      <div className="measure center">
         <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
           <legend className="f4 fw6 ph0 mh0">Registration</legend>
           <div className="mt3">
@@ -101,6 +104,7 @@ class Registration extends Component {
             <button variant="dark" onClick={this.onChange}>
              Find Avaliable Seats
             </button>
+            {(this.state.seats!=null)?<p>{this.state.seats[0].availableseats}</p>:null}
           </div>
           <div className="mv3">
             <label className="db fw6 lh-copy f6" htmlFor="offline/online">Offline/Online</label>
@@ -108,13 +112,16 @@ class Registration extends Component {
           </div>
           <div className="mv3">
             <label className="db fw6 lh-copy f6" htmlFor="subject-name">Subject Name</label>
-            <input className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="subjectname" placeholder="subjectname" onChange={this.changeSubjectname} value={this.state.subjectname}  />
+           <input className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="subjectname" placeholder="subjectname" onChange={this.changeSubjectname} value={this.state.subjectname}  />
           </div>
         </fieldset>
-        <div className="">
-          <input className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value="Submit" />
+       <div className="">
+          <button onClick={this.onSubmit}>
+          {/*<input className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value="Submit" />*/}
+           Submit
+          </button>
         </div>
-      </form>
+      </div>
     </main>
    </article>
   </div> 
