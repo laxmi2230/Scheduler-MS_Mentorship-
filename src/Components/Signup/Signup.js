@@ -1,6 +1,7 @@
 import React, { Component} from 'react';
 import axios from 'axios';
 import './Signup.css'
+import { Link } from 'react-router-dom';
 
 
 class Signup extends Component {
@@ -66,7 +67,7 @@ class Signup extends Component {
       <div className="container">
       <article className="dark-gray b--black-10 mv4 w-100 w-50-m w-25-l mw5 center">
       <main className="pa4 black-80">
-      <form className="measure center" onSubmit={this.onSubmit}>
+      <div className="measure center">
         <fieldset id="sign_up" class="ba b--transparent ph0 mh0">
           <legend className="f4 fw6 ph0 mh0">Sign In</legend>
           <div class="mt3">
@@ -87,12 +88,14 @@ class Signup extends Component {
           </div>
         </fieldset>
         <div className="">
-          <input className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value="Sign in" />
+        <button onClick={this.onSubmit}>
+          <Link to="/Classinfo">
+          {/*<input className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value="Submit" />*/}
+           Submit
+          </Link>
+          </button>
         </div>
-        <div className="lh-copy mt3">
-          <a href="#0" className="f6 link dim black db">Back</a>
-        </div>
-      </form>
+      </div>
     </main>
    </article>
   </div> 

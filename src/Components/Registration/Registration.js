@@ -94,7 +94,7 @@ class Registration extends Component {
           </div>
           <div className="mv3">
             <label className="db fw6 lh-copy f6" htmlFor="date-of-birth">Date-of-Birth</label>
-            <input className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="number" placeholder="DOB" onChange={this.changeDob} value={this.state.dob}  />
+            <input className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="date" placeholder="DOB" onChange={this.changeDob} value={this.state.dob}  />
           </div>
           <div className="mv3">
             <label className="db fw6 lh-copy f6" htmlFor="subject-code">Subject Code</label>
