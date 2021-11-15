@@ -5,14 +5,14 @@ const user1= mongoose.Schema({
         type: String,
     },
     dob:{
-        type: Number
+        type: Date
     },
     subjectcode:{
         type: String,
         required: true,
         //required: true,
          //unique: false,
-    },
+    }, 
     offline_online:{
         type: String,
     },

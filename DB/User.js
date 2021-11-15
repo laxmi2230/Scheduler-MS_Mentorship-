@@ -10,7 +10,7 @@ const user= mongoose.Schema({
     subjectcode:{
         type: String,
         required: true,
-        unique: false,
+        unique: true,
     },
     subjectname:{
         type: String

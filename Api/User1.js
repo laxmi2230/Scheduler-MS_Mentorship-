@@ -16,4 +16,20 @@ route.post('/', async (req, res)=> {
     res.json (usermodel1);
 })
 
+route.post("/info", async (req,res,next)=>{ 
+   // var subjectcode=req.body.subjectcode;  
+  //console.log(subjectcode)
+try{
+    const respo = await User1.find({
+        subjectcode:req.body.subjectcode
+    });
+    res.send(respo);
+} catch (err) {     
+    res.status(500);
+    res.send({
+        err: "Server error",
+    });
+    next(err);
+}
+}) 
 module.exports = route;
