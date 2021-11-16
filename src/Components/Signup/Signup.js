@@ -1,6 +1,7 @@
 import React, { Component} from 'react';
 import axios from 'axios';
 import './Signup.css'
+//import Classinfo from '../ClassInfo';
 import { Link } from 'react-router-dom';
 
 
@@ -89,10 +90,12 @@ class Signup extends Component {
         </fieldset>
         <div className="">
         <button onClick={this.onSubmit}>
-          <Link to="/Classinfo">
-          {/*<input className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value="Submit" />*/}
-           Submit
-          </Link>
+        <Link
+        to='/Classinfo'
+        state={{ from: 'occupation' }}
+        >
+       Next Step
+       </Link>
           </button>
         </div>
       </div>
