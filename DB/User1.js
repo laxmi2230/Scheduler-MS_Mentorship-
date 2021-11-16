@@ -7,7 +7,7 @@ const user1= mongoose.Schema({
     dob:{
         type: Date
     },
-    subjectcode:{
+    subjectcode:{ 
         type: String,
         required: true,
         //required: true,
