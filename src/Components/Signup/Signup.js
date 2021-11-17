@@ -90,12 +90,8 @@ class Signup extends Component {
         </fieldset>
         <div className="">
         <button onClick={this.onSubmit}>
-        <Link
-        to='/Classinfo'
-        state={{ from: 'occupation' }}
-        >
-       Next Step
-       </Link>
+        <Link to={'/classinfo/'+this.state.subjectcode}>Submit</Link>
+      
           </button>
         </div>
       </div>

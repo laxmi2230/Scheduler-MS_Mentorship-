@@ -1,20 +1,45 @@
-import React,{useState} from 'react'
-import { useLocation } from 'react-router-dom'
+import axios from 'axios';
+import React,{useState, useEffect} from 'react'
+//import axios from 'axios';
+//import { useLocation } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
-const ClassInfo = () => {
-   const [info,setInfo]=useState([]);
-   const [loading,setLoading]=useState(true);
-   const location = useLocation()
-   const { from } = location.state
+
+const Classinfo = () => {
+   //const [i,setInfo]=useState([]);
+   //const [loading,setLoading]=useState(true);
+   //const location = useLocation()
+   const { subjectcode } = useParams()
+   const [posts,setPosts] = useState([]);
+  // const { from } = location.state
   //const { subjectcode } = location.state
+    
+  useEffect(()=>{
+ const infos = {
+   subjectcode:subjectcode
+  };
+  axios.post('http://localhost:3001/api/usermodel1/info',infos)
+                            .then(response => {
+                              setPosts(response.data);
+                            }).catch(error => {
+                              console.error('Something went wrong!', error);
+                            });
+  }, []);
+  const useaxiosPosts = posts.map((students)=>{
+    return <div> 
+         <h3>{students.fullname}</h3>
+    </div>
+  })
+
+
     return (
         <div>
-            {this.state.subjectcode}
+           {posts  && useaxiosPosts}
         </div>
     )
 }
 
-export default ClassInfo
+export default Classinfo
 
 
 
