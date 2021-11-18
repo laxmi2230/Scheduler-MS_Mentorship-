@@ -9,6 +9,7 @@ class Registration extends Component {
     this.state = {
       fullname:'',
       dob:'',
+      roll_no:'',
       offline_online:'',
       subjectcode:'',
       subjectname:'',
@@ -16,6 +17,7 @@ class Registration extends Component {
     }
     this.changeFullname=this.changeFullname.bind(this)
     this.changeDob=this.changeDob.bind(this)
+    this.changeRoll=this.changeRoll.bind(this)
     this.changeOfflineonline=this.changeOfflineonline.bind(this)
     this.changeSubjectcode=this.changeSubjectcode.bind(this)
     this.changeSubjectname=this.changeSubjectname.bind(this)
@@ -32,6 +34,11 @@ class Registration extends Component {
   changeDob(event){
     this.setState({
       dob:event.target.value
+    })
+  }
+  changeRoll(event){
+    this.setState({
+      roll_no:event.target.value
     })
   }
   changeOfflineonline(event){
@@ -55,6 +62,7 @@ class Registration extends Component {
     const registered = {
       fullname: this.state.fullname,
       dob: this.state.dob,
+      roll_no: this.state.roll_no,
       offline_online: this.state.offline_online,
       subjectcode: this.state.subjectcode,
       subjectname: this.state.subjectname
@@ -65,6 +73,7 @@ class Registration extends Component {
       this.setState({
       fullname:'',
       dob:'',
+      roll_no: '',
       offline_online:'',
       subjectcode:'',
       subjectname:'' 
@@ -97,6 +106,10 @@ class Registration extends Component {
             <input className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="date" placeholder="DOB" onChange={this.changeDob} value={this.state.dob}  />
           </div>
           <div className="mv3">
+            <label className="db fw6 lh-copy f6" htmlFor="Roll-Number">Roll Number</label>
+            <input className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="number" placeholder="Roll-no" onChange={this.changeRoll} value={this.state.roll_no}  />
+          </div>
+          <div className="mv3">
             <label className="db fw6 lh-copy f6" htmlFor="subject-code">Subject Code</label>
             <input className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="subjectcode" placeholder="subjectcode(Only Char)" onChange={this.changeSubjectcode} value={this.state.subjectcode} />
             &nbsp;&nbsp;&nbsp;
@@ -107,8 +120,10 @@ class Registration extends Component {
             {(this.state.seats!=null)?<p>{this.state.seats[0].availableseats}</p>:null}
           </div>
           <div className="mv3">
-            <label className="db fw6 lh-copy f6" htmlFor="offline/online">Offline/Online</label>
-            <input className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="offline_online" placeholder="offline/online" onChange={this.changeOfflineonline} value={this.state.Offline_online} />
+          <select className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"  onChange={this.changeOfflineonline} value={this.state.offline_online} > 
+          <option className="db fw6 lh-copy f6" htmlFor="offline/online">Online</option>
+          <option className="db fw6 lh-copy f6" htmlFor="offline/online">Offline</option>
+          </select>
           </div>
           <div className="mv3">
             <label className="db fw6 lh-copy f6" htmlFor="subject-name">Subject Name</label>
