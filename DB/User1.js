@@ -7,6 +7,9 @@ const user1= mongoose.Schema({
     dob:{
         type: Date
     },
+    roll_no:{
+       type: Number
+    },
     subjectcode:{ 
         type: String,
         required: true,
