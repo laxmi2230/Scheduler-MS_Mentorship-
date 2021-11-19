@@ -44,6 +44,13 @@ class Signup extends Component {
   onSubmit(event){
     event.preventDefault()
 
+    const valid = {
+      email: this.state.email
+    }
+    
+    axios.post('http://localhost:3001/api/usermodel/check', valid)
+        .then(response => console.log(response.data))  
+
     const registered = {
       email: this.state.email,
       password: this.state.password,
