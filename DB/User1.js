@@ -9,18 +9,6 @@ const user1= mongoose.Schema({
     },
     roll_no:{
        type: Number
-    },
-    subjectcode:{ 
-        type: String,
-        required: true,
-        //required: true,
-         //unique: false,
-    }, 
-    offline_online:{
-        type: String,
-    },
-    subjectname:{
-        type: String
     }
 });
 

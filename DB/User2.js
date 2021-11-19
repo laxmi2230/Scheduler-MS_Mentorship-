@@ -1,25 +1,28 @@
 const mongoose = require('mongoose');
 
-const user2= mongoose.Schema({
-    availableseats:{
-        type: Number,
+const user2 = mongoose.Schema({
+  availableseats: {
+    type: Number,
+  },
+  totalseats: {
+    type: Number,
+  },
+  onlineseats: {
+    type: Number,
+  },
+  offlineseats: {
+    type: Number,
+  },
+  subjectcode: {
+    type: String,
+    required: true,
+  },
+  students: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "user1",
     },
-    totalseats:{
-        type: Number,
-    },
-    onlineseats:{
-        type: Number,
-    },
-    offlineseats:{
-        type: Number,
-    },
-    subjectcode:{
-        type: String,
-        required: true,
-        //required: true,
-         //unique: false,
-    },
-  
+  ],
 });
 
 module.exports = User2 = mongoose.model('user2', user2);
