@@ -57,6 +57,7 @@ class Registration extends Component {
   }
   onSubmit(event) {
     event.preventDefault();
+    console.log(this.state);
 
     // Add vaildation for all state here
 
@@ -72,8 +73,11 @@ class Registration extends Component {
 
     //
     const { seats, offline_online } = this.state;
-    if (seats === null) {
+    if (this.state.seats === null) {
       alert("First click on Find available seats");
+      return;
+    } else if (Object.keys(this.state.seats).length === 0) {
+      alert("Invalid subject code");
       return;
     } else {
       if (seats.onlineseats <= 0 && offline_online === "online") {
@@ -97,6 +101,10 @@ class Registration extends Component {
       .post("http://localhost:3001/api/usermodel1", data)
       .then((response) => {
         console.log(response);
+        if (response.hasOwnProperty("message")) {
+          alert("Invalid subject code");
+          return;
+        }
         const registered = {
           id: response.data._id,
           offline_online: this.state.offline_online,
@@ -107,6 +115,9 @@ class Registration extends Component {
           .post("http://localhost:3001/api/usermodel1/collections", registered)
           .then((res) => {
             console.log(res.data);
+            if(res.data.hasOwnProperty("message")){
+              alert("User already registered for the given subject")
+            }
             this.setState({
               fullname: "",
               dob: "",
@@ -127,6 +138,21 @@ class Registration extends Component {
     axios
       .post("http://localhost:3001/api/usermodel2/seats", blogs)
       .then((response) => this.setState({ seats: response.data }));
+  }
+
+  loadAvailableSeats() {
+    const { seats } = this.state;
+    if (seats === null) {
+    } else if (Object.keys(seats).length === 0) {
+    } else {
+      return (
+        <div>
+          <p>Avaliable Seats : {seats.availableseats}</p> <br></br>
+          <p>Online Seats : {seats.onlineseats}</p> <br></br>
+          <p>Offline Seats : {seats.offlineseats}</p> <br></br>
+        </div>
+      );
+    }
   }
   render() {
     //console.log(this.state.seats)
@@ -189,9 +215,7 @@ class Registration extends Component {
                   <button variant="dark" onClick={this.onChange}>
                     Find Avaliable Seats
                   </button>
-                  {this.state.seats != null ? (
-                    <p>{this.state.seats[0].availableseats}</p>
-                  ) : null}
+                  {this.loadAvailableSeats()}
                 </div>
                 <div className="mv3">
                   <select
