@@ -9,6 +9,9 @@ const user1= mongoose.Schema({
     },
     roll_no:{
        type: Number
+    },
+    subjectcode: {
+        type: String
     }
 });
 

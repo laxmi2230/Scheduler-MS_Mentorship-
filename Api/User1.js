@@ -5,23 +5,30 @@ const User2 = require("../DB/User2");
 const route = express.Router();
 
 route.post("/", async (req, res) => {
-  const { fullname, dob, roll_no } = req.body;
-  let user1 = {};
-  user1.fullname = fullname;
-  user1.dob = dob;
-  user1.roll_no = roll_no;
-  let user = await User1.findOne({ roll_no: roll_no });
-  //console.log(user + "Mukul");
+  const { fullname, dob, roll_no, subjectcode } = req.body;
 
-  if (user == null) {
-    user = await User1.create(user1);
+  let doc = await User2.findOne({
+    subjectcode: subjectcode,
+  });
+
+  if (doc === null) {
+    res.send({ message: "Subject code is not valid" });
+  } else {
+    let user1 = {};
+    user1.fullname = fullname;
+    user1.dob = dob;
+    user1.roll_no = roll_no;
+    user1.subjectcode = subjectcode;
+    let user = await User1.findOne({ roll_no: roll_no });
+
+    if (user == null) {
+      user = await User1.create(user1);
+    }
+    res.send(user);
   }
-  res.send(user);
 });
 
 route.post("/info", async (req, res, next) => {
-  // var subjectcode=req.body.subjectcode;
-  //console.log(subjectcode)
   try {
     const respo = await User1.find({
       subjectcode: req.body.subjectcode,
@@ -44,13 +51,9 @@ route.post("/collections", async (req, res, next) => {
       subjectcode: subjectcode,
     });
 
-    console.log(id + "ID")
     let ind = doc.students.findIndex(function (student, index) {
-      console.log(student.toString())
       if (student.toString() === id) return true;
     });
-
-    console.log(ind + "Ind")
 
     if (ind != -1) {
       res.send({ message: "User already exists" });
@@ -68,7 +71,7 @@ route.post("/collections", async (req, res, next) => {
       res.send(doc);
     }
   } catch (err) {
-    // res.status(500);
+    res.status(500);
     res.send({
       err: "Server error",
     });
