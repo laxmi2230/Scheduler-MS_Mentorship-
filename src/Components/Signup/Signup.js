@@ -12,23 +12,52 @@ class Signup extends Component {
       password: "",
       subjectcode: "",
       subjectname: "",
+      isDisabled:true,
+      emailError:false,
+      passwordError:false
     };
     this.changeEmail = this.changeEmail.bind(this);
     this.changePassword = this.changePassword.bind(this);
     this.changeSubjectcode = this.changeSubjectcode.bind(this);
     this.changeSubjectname = this.changeSubjectname.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.validateEmail=this.validateEmail.bind(this);
+  }
+  validateEmail(email){
+    const pattern = /[a-zA-Z0-9]+[\.]?([a-zA-Z0-9]+)?[\@][a-z]{3,9}[\.][a-z]{2,5}/g;
+    const result = pattern.test(email);
+    if(result===true){
+      this.setState({
+        emailError:false,
+        email:email
+      })
+    } else{
+      this.setState({ 
+        emailError:true
+      })
+    }
   }
 
   changeEmail(event) {
+   // console.log("hello")
+   this.validateEmail(event.target.value)
     this.setState({
       email: event.target.value,
+    
+      
     });
   }
   changePassword(event) {
-    this.setState({
-      password: event.target.value,
-    });
+    if(event.target.value==='' || event.target.value===null){
+      this.setState({
+        passwordError:true
+      })
+    } else {
+      this.setState({
+        passwordError:false,
+        password: event.target.value
+      })
+    }
   }
   changeSubjectcode(event) {
     this.setState({
@@ -85,6 +114,7 @@ class Signup extends Component {
                     onChange={this.changeEmail}
                     value={this.state.email}
                   />
+                   {this.state.emailError ? <span style={{color: "red"}}>Please Enter valid email address</span> : ''}
                 </div>
                 <div className="mv3">
                   <label className="db fw6 lh-copy f6" for="password">
@@ -97,6 +127,7 @@ class Signup extends Component {
                     onChange={this.changePassword}
                     value={this.state.password}
                   />
+                  {this.state.passwordError ? <span style={{color: "red"}}>Please enter some value</span> : ''}
                 </div>
                 <div className="mv3">
                   <label className="db fw6 lh-copy f6" for="subject-code">
@@ -124,7 +155,7 @@ class Signup extends Component {
                 </div>
               </fieldset>
               <div className="">
-                <button onClick={this.onSubmit}>
+                <button disabled={this.state.isDisabled} onClick={this.onSubmit}>
                   <Link to={"/classinfo/" + this.state.subjectcode}>
                     Submit
                   </Link>

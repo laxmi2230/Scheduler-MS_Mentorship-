@@ -3,6 +3,8 @@ import React,{useState, useEffect} from 'react'
 //import axios from 'axios';
 //import { useLocation } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
+import { Table } from 'react-bootstrap';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 
 const Classinfo = () => {
@@ -26,8 +28,25 @@ const Classinfo = () => {
                             });
   }, []);
   const useaxiosPosts = posts.map((students)=>{
-    return <div> 
-         <h3>{students.fullname}</h3>
+    return <div className="table-responsive"> 
+       {/* <h3>{students.fullname}</h3>
+         <h3>{students.offline_online}</h3> */}
+  <Table striped bordered hover variant="dark" responsive>
+  <thead>
+    <tr>
+      <th>Students Name</th>
+      <th>Date of Birth</th>
+      <th>Offline/Online</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{students.fullname}</td>
+      <td>{students.dob}</td>
+      <td>{students.offline_online}</td>
+    </tr>
+  </tbody>
+   </Table>
     </div>
   })
 
