@@ -5,7 +5,7 @@ const User2 = require("../DB/User2");
 const route = express.Router();
 
 route.post("/", async (req, res) => {
-  const { fullname, dob, roll_no, subjectcode } = req.body;
+  const { fullname, dob, roll_no, subjectcode, offline_online } = req.body;
 
   let doc = await User2.findOne({
     subjectcode: subjectcode,
@@ -19,6 +19,7 @@ route.post("/", async (req, res) => {
     user1.dob = dob;
     user1.roll_no = roll_no;
     user1.subjectcode = subjectcode;
+    user1.offline_online = offline_online;
     let user = await User1.findOne({ roll_no: roll_no });
 
     if (user == null) {

@@ -12,6 +12,9 @@ const user1= mongoose.Schema({
     },
     subjectcode: {
         type: String
+    },
+    offline_online: {
+        type: String
     }
 });
 
