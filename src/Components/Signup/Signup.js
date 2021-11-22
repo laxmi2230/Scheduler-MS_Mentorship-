@@ -1,19 +1,20 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "./Signup.css";
+import { withRouter } from "react-router";
 //import Classinfo from '../ClassInfo';
-import { Link } from "react-router-dom";
-
+//import { Link } from "react-router-dom";
+ 
 class Signup extends Component {
   constructor() {
     super();
     this.state = {
       email: "",
       password: "",
-      subjectcode: "",
+      subjectcode: "", 
       subjectname: "",
       isDisabled:true,
-      emailError:false,
+      emailError:false, 
       passwordError:false
     };
     this.changeEmail = this.changeEmail.bind(this);
@@ -68,8 +69,16 @@ class Signup extends Component {
     this.setState({
       subjectname: event.target.value,
     });
+    if(this.state.emailError === false && this.state.passwordError === false ){
+      this.setState({
+        isDisabled:false
+        
+      })
+    }
   }
+ 
   onSubmit(event) {
+    console.log("hello");
     event.preventDefault();
 
     const registered = {
@@ -82,10 +91,8 @@ class Signup extends Component {
       .post("http://localhost:3001/api/usermodel", registered)
       .then((response) => {
         console.log(response.data);
-        if (response.data.hasOwnProperty("message")) {
-          alert("Teacher for same subject code already exists");
-          return;
-        }
+      
+      this.props.history.push("/classinfo/" + this.state.subjectcode); 
         this.setState({
           email: "",
           password: "",
@@ -94,6 +101,7 @@ class Signup extends Component {
         });
       });
   }
+
 
   render() {
     return (
@@ -155,10 +163,10 @@ class Signup extends Component {
                 </div>
               </fieldset>
               <div className="">
-                <button disabled={this.state.isDisabled} onClick={this.onSubmit}>
-                  <Link to={"/classinfo/" + this.state.subjectcode}>
-                    Submit
-                  </Link>
+                <button  onClick={this.onSubmit}>
+              {/* <Link to={"/classinfo/" + this.state.subjectcode}> */}
+                  Submit  
+                
                 </button>
               </div>
             </div>
@@ -169,4 +177,4 @@ class Signup extends Component {
   }
 }
 
-export default Signup;
+export default withRouter(Signup);

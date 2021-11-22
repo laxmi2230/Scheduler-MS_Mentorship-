@@ -2,23 +2,23 @@ import axios from 'axios';
 import React,{useState, useEffect} from 'react'
 //import axios from 'axios';
 //import { useLocation } from 'react-router-dom'
-import { useParams } from 'react-router-dom'
+//import { useParams } from 'react-router-dom'
 import { Table } from 'react-bootstrap';
 import "bootstrap/dist/css/bootstrap.min.css";
 
 
-const Classinfo = () => {
+const Classinfo = (props) => {
    //const [i,setInfo]=useState([]);
-   //const [loading,setLoading]=useState(true);
+   //const [loading,setLoading]=useState(true); 
    //const location = useLocation()
-   const { subjectcode } = useParams()
+   //const { subjectcode } = useParams()
    const [posts,setPosts] = useState([]);
   // const { from } = location.state
   //const { subjectcode } = location.state
     
   useEffect(()=>{
  const infos = {
-   subjectcode:subjectcode
+  subjectcode:props.match.params.subjectcode
   };
   axios.post('http://localhost:3001/api/usermodel1/info',infos)
                             .then(response => {
