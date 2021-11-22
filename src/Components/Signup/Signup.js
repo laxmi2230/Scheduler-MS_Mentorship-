@@ -3,7 +3,8 @@ import axios from "axios";
 import "./Signup.css";
 import { withRouter } from "react-router";
 //import Classinfo from '../ClassInfo';
-//import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+//import {Button} from "react-bootstrap"
  
 class Signup extends Component {
   constructor() {
@@ -166,7 +167,10 @@ class Signup extends Component {
                 <button  onClick={this.onSubmit}>
               {/* <Link to={"/classinfo/" + this.state.subjectcode}> */}
                   Submit  
-                
+                </button>
+                &nbsp;&nbsp;&nbsp;
+                < button type="submit">
+                  <Link to = "/"  style={{ justifyContent: "space-between"}}>Back To HomePage</Link>
                 </button>
               </div>
             </div>

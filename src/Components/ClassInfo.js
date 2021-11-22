@@ -4,7 +4,9 @@ import React,{useState, useEffect} from 'react'
 //import { useLocation } from 'react-router-dom'
 //import { useParams } from 'react-router-dom'
 import { Table } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
+
 
 
 const Classinfo = (props) => {
@@ -54,6 +56,9 @@ const Classinfo = (props) => {
     return (
         <div>
            {posts  && useaxiosPosts}
+           < button type="submit">
+                  <Link to = "/"  style={{ justifyContent: "space-between"}}>Back To HomePage</Link>
+           </button>
         </div>
     )
 }

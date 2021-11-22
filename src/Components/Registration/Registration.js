@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import axios from "axios";
 //import { Button } from 'react-bootstrap';
 import "./Registration.css";
+import { Link } from "react-router-dom";
+
 
 class Registration extends Component {
   constructor() {
@@ -254,6 +256,10 @@ class Registration extends Component {
                 <button onClick={this.onSubmit}>
                   {/*<input className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value="Submit" />*/}
                   Submit
+                </button>
+                &nbsp;&nbsp;&nbsp;
+                < button type="submit">
+                  <Link to = "/"  style={{ justifyContent: "space-between"}}>Back To HomePage</Link>
                 </button>
               </div>
             </div>
