@@ -164,7 +164,8 @@ class Registration extends Component {
           <main className="pa4 black-80">
             <div className="measure center">
               <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
-                <legend className="f4 fw6 ph0 mh0">Registration</legend>
+                <legend className="f4 fw6 ph0 mh0"><h1><u>Registration For Students</u></h1></legend>
+                <br/>
                 <div className="mt3">
                   <label className="db fw6 lh-copy f6" htmlFor="full-name">
                     Full Name

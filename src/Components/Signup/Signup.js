@@ -111,7 +111,8 @@ class Signup extends Component {
           <main className="pa4 black-80">
             <div className="measure center">
               <fieldset id="sign_up" class="ba b--transparent ph0 mh0">
-                <legend className="f4 fw6 ph0 mh0">Sign In</legend>
+                <legend className="f4 fw6 ph0 mh0"><h1><u>SignUp For Teachers</u></h1></legend>
+                <br/>
                 <div class="mt3">
                   <label className="db fw6 lh-copy f6" for="email-address">
                     Email
