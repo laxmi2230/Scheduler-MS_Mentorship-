@@ -4,6 +4,7 @@ import Home  from './Components/Home';
 import Signup from './Components/Signup/Signup';
 import Registration from './Components/Registration/Registration';
 import Information from './Components/Information';
+import About from './Components/About'
 import Classinfo from './Components/ClassInfo';
 
 import './App.css';
@@ -18,6 +19,7 @@ function App() {
           <Route path="/Signup" component={Signup}  />
            <Route path="/Registration" component={Registration}/>
            <Route path="/Information" component={Information}/>
+           <Route path="/About" component={About}/>
           <Route path="/Classinfo" exact component={Classinfo}/>
           <Route path="/classinfo/:subjectcode" component={Classinfo}/>
         </Switch>

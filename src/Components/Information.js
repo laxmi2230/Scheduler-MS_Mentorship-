@@ -2,6 +2,7 @@ import React from 'react';
 import { Table } from 'react-bootstrap';
 import "bootstrap/dist/css/bootstrap.min.css";
 import NavBar from './NavBar/NavBar';
+import { Link } from 'react-router-dom';
 
 
 const Information = () => {
@@ -50,6 +51,7 @@ const Information = () => {
   <thead>
     <tr>
       <th>Name</th>
+      <th>Subject Code</th>
       <th>Email-id</th>
       <th>password</th>
     </tr>
@@ -57,26 +59,31 @@ const Information = () => {
   <tbody>
     <tr>
       <td>Teacher1</td>
+      <td>CS1601</td>
       <td>teacher1@gmail.com</td>
       <td>abc</td>  
     </tr>
     <tr>
       <td>Teacher2</td>
+      <td>CS1602</td>
       <td>teacher2@gmail.com</td>
       <td>def</td> 
     </tr>
     <tr>
       <td>Teacher3</td>
+      <td>CS1603</td>
       <td>teacher3@gmail.com</td>
       <td>ghi</td>
     </tr>
     <tr>
       <td>Teacher4</td>
+      <td>CS1604</td>
       <td>teacher4@gmail.com</td>
       <td>jkl</td>
     </tr>
     <tr>
       <td>Teacher5</td>
+      <td>CS1605</td>
       <td>teacher5@gmail.com</td>
       <td>mno</td>
     </tr>
@@ -117,6 +124,9 @@ const Information = () => {
     </tr>
   </tbody>
   </Table>
+  <button>
+    <Link to="/">Back To Home Page</Link>
+  </button>
   </div>
     )
 }

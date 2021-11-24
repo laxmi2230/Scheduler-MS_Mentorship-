@@ -6,10 +6,10 @@ import { Link } from 'react-router-dom';
 
 const NavBar = () => {
     return (
-        <div>
+ <div>
  <Navbar bg="info" expand={false}>
   <Container fluid>
-    <Navbar.Brand><h2><b><i>SCHEDULER(CSE DEPARTMENT)</i></b></h2></Navbar.Brand>
+    <Navbar.Brand><h3><b><i>SCHEDULER(CSE DEPARTMENT)</i></b></h3></Navbar.Brand>
     <Navbar.Toggle aria-controls="offcanvasNavbar" />
     <Navbar.Offcanvas
       id="offcanvasNavbar"
@@ -21,10 +21,11 @@ const NavBar = () => {
       </Offcanvas.Header>
       <Offcanvas.Body>
         <Nav className="justify-content-end flex-grow-1 pe-3">
-          <Nav.Link><Link to = "/"><h3>Home</h3></Link></Nav.Link>
-          <Nav.Link><Link to = "/Information"><h3>Class Information</h3></Link></Nav.Link>
-          <Nav.Link><Link to = "/Signup"><h3>SignUp For Teachers</h3></Link></Nav.Link>
-          <Nav.Link><Link to = "/Registration"><h3>Registration For Students</h3></Link></Nav.Link>   
+          <Nav.Link><Link to = "/"><h4>Home</h4></Link></Nav.Link>
+          <Nav.Link><Link to = "/About"><h4>About</h4></Link></Nav.Link>
+          <Nav.Link><Link to = "/Information"><h4>Class Information</h4></Link></Nav.Link>
+          <Nav.Link><Link to = "/Signup"><h4>SignUp For Teachers</h4></Link></Nav.Link>
+          <Nav.Link><Link to = "/Registration"><h4>Registration For Students</h4></Link></Nav.Link>   
         </Nav>
       </Offcanvas.Body>
     </Navbar.Offcanvas>
